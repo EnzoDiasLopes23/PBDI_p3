@@ -17,3 +17,14 @@ BEGIN
     AND mother_edu = 6 OR father_edu = 6
 END;
 $$;
+
+DO $$
+CREATE PROCEDURE AlunosAprovados
+    @AlunosAprovados INT OUTPUT
+AS
+BEGIN
+    SELECT @AlunosAprovados = COUNT(student_id)
+    FROM students
+    WHERE grade <> 0
+END;
+$$;
